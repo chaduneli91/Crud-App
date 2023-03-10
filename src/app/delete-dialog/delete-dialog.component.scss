@@ -1,0 +1,38 @@
+.dialog{
+    width: 400px;
+    height: 150px;
+    
+}
+.first-line{
+    display: flex;
+    justify-content: space-between;
+ p{
+    display: flex;
+    margin: 25px 0px 0px 20px ;
+    color: grey;
+ }
+ .cancel-icon{
+    display: flex;
+    margin: 22px 30px 0px 0px;
+    mat-icon{
+        cursor: pointer;
+        
+    }
+}
+
+
+}
+
+.main{
+    display: flex;
+    align-items: center;
+    gap: 0px 30px;
+    margin-left: 22px;
+    
+}
+.two-buttons{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 35px;
+    gap: 5px;
+}

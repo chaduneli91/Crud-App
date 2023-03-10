@@ -1,0 +1,27 @@
+<div class="dialog"> 
+
+<div class="first-line">
+        <div class="p-start">
+            <p><strong> Confirm</strong></p>
+        </div>
+
+        <div class="cancel-icon" (click)="cancelForm()">
+             <mat-icon >close</mat-icon>
+        </div>
+</div>
+
+<div class="main">
+    <mat-icon>report_problem</mat-icon> 
+    <p>Are you sure want to delete List?</p>
+</div>
+
+<div class="two-buttons">
+    
+        <button mat-stroked-button (click)="cancelForm()"><mat-icon >close</mat-icon>No</button>
+    
+    
+         <button mat-stroked-button (click)="yesForm()" ><mat-icon>done</mat-icon>Yes</button>
+   
+</div>
+
+</div>

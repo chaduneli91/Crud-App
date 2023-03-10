@@ -1,0 +1,73 @@
+//თავიდან თლიანად კონტეინერი რაც არის
+    
+.example-container {
+  width: 100%;
+  height: 100vh;
+  background-color: #eaeaea;
+}
+// ჰედერი
+.mat-toolbar{
+  margin-bottom: 35px;
+  height: 130px
+  
+}
+h1{
+  margin-left: 30px;
+}
+// მარჯვნივ რაც გამოდის
+.example-sidenav {
+    padding: 20px;
+    width: 500px;
+  }
+// შუაგული სადაც Add  ღილაკი გვაქვს
+ .example-sidenav-content{
+  
+  width: 95%;
+  margin: auto;
+  height: 600px;
+  background-color: white;
+  border-radius: 25px;  
+ }
+ .search-button{
+  display: flex;
+  justify-content: flex-end;
+  align-items: baseline;
+  
+  mat-form-field{
+    margin: 40px 40px 0px 0px;
+  }
+  button{
+    color: blue;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+    margin: 40px 40px 0px 0px;
+  }
+}
+mat-paginator{
+  margin: 40px 0px 40px;
+}
+.mat-draver-content{
+  background-color: #b9b3b3;
+}
+
+// შუაგული
+
+table {
+  width: 100%;
+}
+
+.mat-mdc-form-field {
+  font-size: 20px;
+  width: 300px;
+  
+}
+
+td, th {
+  width: 14%;
+}
+.delete-icon{
+  color: red;
+  margin-right: 30px;
+}
+
