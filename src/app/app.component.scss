@@ -1,5 +1,5 @@
 //თავიდან თლიანად კონტეინერი რაც არის
-    
+
 .example-container {
   width: 100%;
   height: 100vh;
@@ -69,5 +69,17 @@ td, th {
 .delete-icon{
   color: red;
   margin-right: 30px;
+}
+
+.search-button {
+  ::ng-deep {
+    .mdc-notched-outline__leading {
+      display: none !important
+    }
+    .mdc-text-field--outlined .mdc-notched-outline .mdc-notched-outline__trailing {
+      border-radius: 60px !important;
+      border: 1px solid;
+      }
+    }
 }
 
