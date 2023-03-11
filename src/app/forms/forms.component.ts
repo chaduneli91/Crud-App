@@ -38,7 +38,7 @@ export class FormsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('ng-init', this.item);
+    
     if (this.item) {
       this.userForm.patchValue(this.item);
     }
