@@ -29,8 +29,8 @@ export class FormsComponent implements OnInit {
   ]
   constructor( private _fb: FormBuilder, private _AddService: AddService, private _matDraWer: MatDrawer ){
     this.userForm=this._fb.group({
-      firstName: ['', ([Validators.required, Validators.minLength(2)])],
-      lastName: ['', ([Validators.required])],
+      firstName: ['', ([Validators.required, Validators.minLength(2), Validators.pattern('[a-zA-Z ]*')])],
+      lastName: ['', ([Validators.required, Validators.minLength(2), Validators.pattern('[a-zA-Z ]*')])],
       email: ['', ([Validators.required, Validators.email])],
       userStatus: ['', ([Validators.required])],
       roles: ['', ([Validators.required])]
