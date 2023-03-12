@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
+import {MatSort, Sort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {AddService} from './Services/add.service';
 import { MatDrawer } from '@angular/material/sidenav';
@@ -9,6 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 import { FormControl } from '@angular/forms';
 import { CrudInterface} from './interface/crud-interface'
+import { LiveAnnouncer } from '@angular/cdk/a11y';
 
 
 @Component({
@@ -24,13 +25,14 @@ export class AppComponent implements OnInit{
   dataSource!: MatTableDataSource<CrudInterface> ;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatDrawer) drawer!: MatDrawer;
   editableItem = null;
   nameControl: FormControl= new  FormControl('');
 
 
-  constructor(private _listService:AddService, private _matDialog: MatDialog ){}
+  constructor(private _listService:AddService, private _matDialog: MatDialog, private _liveAnnouncer: LiveAnnouncer ){}
 
   add() {
     this.edit(null);
@@ -82,6 +84,11 @@ deleteList(listId: number){
   
 };
 
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -89,5 +96,15 @@ deleteList(listId: number){
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  announceSortChange(sortState: Sort) {
+    if (sortState.direction) {
+      this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
+    } else {
+      this._liveAnnouncer.announce('Sorting cleared');
+    }
+
+
   }
 }

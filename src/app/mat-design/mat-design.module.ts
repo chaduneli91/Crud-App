@@ -12,6 +12,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule } from '@angular/material/paginator';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatSortModule} from '@angular/material/sort';
 
 
 @NgModule({
@@ -19,6 +20,6 @@ import {MatChipsModule} from '@angular/material/chips';
   imports: [CommonModule],
   exports: [MatToolbarModule, MatSidenavModule, MatFormFieldModule, MatIconModule,
      MatInputModule, MatCardModule, MatSelectModule, MatButtonModule, MatTableModule,
-      MatPaginatorModule, MatDialogModule, MatChipsModule ]
+      MatPaginatorModule, MatDialogModule, MatChipsModule, MatSortModule ]
 })
 export class MatDesignModule { }
