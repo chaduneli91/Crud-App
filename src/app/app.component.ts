@@ -25,14 +25,16 @@ export class AppComponent implements OnInit{
   dataSource!: MatTableDataSource<CrudInterface> ;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-
   @ViewChild(MatSort) sort!: MatSort;
+
   @ViewChild(MatDrawer) drawer!: MatDrawer;
-  editableItem = null;
+  
+
+
   nameControl: FormControl= new  FormControl('');
-
-
   constructor(private _listService:AddService, private _matDialog: MatDialog, private _liveAnnouncer: LiveAnnouncer ){}
+  
+  editableItem = null;
 
   add() {
     this.edit(null);
@@ -43,9 +45,11 @@ export class AppComponent implements OnInit{
     this.drawer.toggle();
   }
 
+  
+  
+  
   ngOnInit(): void {
     this.getList();
-
     this.nameControl.valueChanges.pipe(
       debounceTime(500)
     ).subscribe(
@@ -58,7 +62,7 @@ export class AppComponent implements OnInit{
   
 getList(){
   this._listService.list().subscribe(
-    (res) => {
+    (res: CrudInterface[]) => {
       
       this.dataSource = new MatTableDataSource(res);
       this.dataSource.sort=this.sort;
@@ -70,7 +74,7 @@ getList(){
 }
 
 deleteList(listId: number){
-  console.log('listId: ', listId);
+  
   const dialog = this._matDialog.open(DeleteDialogComponent, { });
 
   dialog.afterClosed().subscribe(
@@ -85,8 +89,10 @@ deleteList(listId: number){
 };
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    // this.dataSource.paginator = this.paginator;
+    if(this.dataSource) {
+      this.dataSource.sort = this.sort;
+    }
   }
 
   applyFilter(event: Event) {
