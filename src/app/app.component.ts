@@ -1,10 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort, Sort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {AddService} from './Services/add.service';
 import { MatDrawer } from '@angular/material/sidenav';
-import { debounceTime } from 'rxjs';
+import { Subscription, debounceTime } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 import { FormControl } from '@angular/forms';
@@ -17,16 +17,15 @@ import { LiveAnnouncer } from '@angular/cdk/a11y';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
- 
+export class AppComponent implements OnInit, OnDestroy{
+  private _subscription!: Subscription
 
-  displayedColumns: string[] = [ 'picture', 'email',  'firstName', 'lastName', 'roles', 'userStatus', 'edit', 'delete' ];
+  displayedColumns: string[] = [ 'firstName', 'lastName', 'email',  'roles', 'userStatus', 'edit', 'delete' ];
 
   dataSource!: MatTableDataSource<CrudInterface> ;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-
   @ViewChild(MatDrawer) drawer!: MatDrawer;
   
 
@@ -61,7 +60,7 @@ export class AppComponent implements OnInit{
   
   
 getList(){
-  this._listService.list().subscribe(
+  this._subscription=this._listService.list().subscribe(
     (res: CrudInterface[]) => {
       
       this.dataSource = new MatTableDataSource(res);
@@ -112,5 +111,8 @@ deleteList(listId: number){
     }
 
 
+  }
+  ngOnDestroy(): void {
+    this._subscription.unsubscribe();
   }
 }

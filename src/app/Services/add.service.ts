@@ -25,8 +25,8 @@ export class AddService {
 
   }
 
-  editTeg(itemId: number, item: CrudInterface ):Observable< CrudInterface > {
-    return this._http.put< CrudInterface >(`${this.ROOT_URL}/add/${itemId}`, item);
+  editTeg(itemId: number, item: CrudInterface ): Observable<CrudInterface> {
+    return this._http.put<CrudInterface>(`${this.ROOT_URL}/add/${itemId}`, item);
   }
 
 

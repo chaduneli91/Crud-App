@@ -66,12 +66,10 @@ export class FormsComponent implements OnInit {
               
             this.cancelForm();
             this.onFormSubmit.emit('add');
-              //this.successText = 'You have successfully added a user'
           }
           }
         }
-          // როდესაც subscrible-ს აკეთებ აქ შემოგდის ყველაფერი ის რაც გაგზავნის შემდეგ მოხდება 
-          // res => this.users = res
+          
         )
       }
     }
